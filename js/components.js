@@ -59,7 +59,7 @@ const Components = {
             <a href="#skills" class="nav-link">Skills</a>
             <a href="#contact" class="nav-link">Contact</a>
           </div>
-          <button onclick="window.scrollTo('#contact')" class="btn btn-secondary text-sm">Hire Me</button>
+          <a href="#contact" class="btn btn-secondary text-sm">Hire Me</a>
         </div>
       </div>
     </nav>
@@ -82,11 +82,11 @@ const Components = {
             combining deep technical expertise with project oversight across APAC markets.
           </p>
           <div class="flex flex-wrap gap-4">
-            <button onclick="window.scrollTo('#experience')" class="btn btn-secondary">
+            <a href="#experience" class="btn btn-secondary">
               View Experience
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-            </button>
-            <button onclick="window.scrollTo('#contact')" class="btn btn-primary">Get in Touch</button>
+            </a>
+            <a href="#contact" class="btn btn-primary">Get in Touch</a>
           </div>
           <div class="flex items-center gap-6 pt-4">
             <a href="${linkedin}" target="_blank" class="text-slate-400 hover:text-gold-400 transition-colors">
