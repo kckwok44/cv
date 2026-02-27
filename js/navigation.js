@@ -24,18 +24,6 @@ const NavigationController = () => {
     window.addEventListener('scroll', onScroll, { passive: true });
   };
 
-  /**
-   * Initializes smooth scrolling for anchor links.
-   */
-  const initSmoothScroll = () => {
-    document.body.addEventListener('click', e => {
-      const link = e.target.closest('a[href^="#"]');
-      if (!link) return;
-      e.preventDefault();
-      scrollTo(link.getAttribute('href'), 80);
-    });
-  };
-
   const initActiveLinks = () => {
     const sections = $$('section[id]');
     const navLinks = $$('.nav-link');
@@ -54,7 +42,6 @@ const NavigationController = () => {
 
   const init = () => {
     handleScroll();
-    initSmoothScroll();
     initActiveLinks();
   };
 
