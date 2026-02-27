@@ -24,12 +24,15 @@ const NavigationController = () => {
     window.addEventListener('scroll', onScroll, { passive: true });
   };
 
+  /**
+   * Initializes smooth scrolling for anchor links.
+   */
   const initSmoothScroll = () => {
-    $$('a[href^="#"]').forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        scrollTo(link.getAttribute('href'), 80);
-      });
+    document.body.addEventListener('click', e => {
+      const link = e.target.closest('a[href^="#"]');
+      if (!link) return;
+      e.preventDefault();
+      scrollTo(link.getAttribute('href'), 80);
     });
   };
 

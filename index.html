@@ -39,148 +39,151 @@
     import Components from './js/components.js';
     import AnimationController from './js/animations.js';
     import NavigationController from './js/navigation.js';
-    import { scrollTo } from './js/utils.js';
-    window.scrollTo = scrollTo;
-
-    const profile = {
-      name: 'Ben Kwok',
-      title: 'Senior Software Engineer',
-      location: 'Hong Kong',
-      email: 'kcbenkwok@gmail.com',
-      linkedin: 'https://linkedin.com/in/benkwok1018',
-      years: 9,
-      markets: 10
-    };
-
-    const stats = { manualReduction: 40, years: 9, markets: 10 };
-
-    const jobs = [
-      {
-        period: 'May 2021 - Present',
-        title: 'Software Engineer',
-        company: 'Société Générale, Hong Kong',
-        achievements: [
-          'Designed microservices for 10+ APAC markets',
-          'Automated workflows reducing manual processing by 40%',
-          'Full-stack with React, FastAPI, Neo4j, PostgreSQL'
-        ],
-        tags: ['Python', 'FastAPI', 'Kubernetes']
-      },
-      {
-        period: 'Nov 2018 - May 2021',
-        title: 'Software Engineer',
-        company: 'AI Conversational Company',
-        achievements: [
-          'Collaborated with NLP Scientists on production ML systems',
-          'Built end-to-end ML solutions for customer problems',
-          'Designed K8s & Kubeless serverless architecture'
-        ],
-        tags: ['NLP', 'Machine Learning', 'Kubernetes']
-      },
-      {
-        period: 'Aug 2017 - Nov 2018',
-        title: 'Engineer',
-        company: 'TVB International Company',
-        achievements: [
-          'Built web crawlers for collecting infringing material',
-          'Developed logo detection on pictures using ML',
-          'Network packet sniffing tools development'
-        ],
-        tags: ['Python', 'Web Scraping', 'Data Processing']
-      },
-      {
-        period: 'Jul 2016 - Aug 2017',
-        title: 'Assistant System Engineer',
-        company: 'Radio Frequency Engineering Ltd',
-        achievements: [
-          'Designed Radio & LTE Networks for Mass Transport Railway',
-          'Participated in government Railway Radio Network projects'
-        ],
-        tags: ['LTE', 'Network Design', 'Telecom']
-      }
-    ];
-
-    const skillCategories = [
-      {
-        title: 'Backend Development',
-        icon: '<svg class="w-6 h-6 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/></svg>',
-        skills: ['Python', 'FastAPI', 'Flask', 'Django', 'Node.js', 'Celery']
-      },
-      {
-        title: 'Frontend Development',
-        icon: '<svg class="w-6 h-6 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>',
-        skills: ['React', 'JavaScript', 'HTML/CSS', 'Data Visualization']
-      },
-      {
-        title: 'Databases',
-        icon: '<svg class="w-6 h-6 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/></svg>',
-        skills: ['PostgreSQL', 'MongoDB', 'Neo4j', 'Redis', 'Elasticsearch']
-      },
-      {
-        title: 'DevOps & Cloud',
-        icon: '<svg class="w-6 h-6 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>',
-        skills: ['Docker', 'Kubernetes', 'Azure', 'Jenkins', 'GitHub Actions', 'AWS S3']
-      },
-      {
-        title: 'Data & Monitoring',
-        icon: '<svg class="w-6 h-6 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>',
-        skills: ['Pandas', 'NumPy', 'Grafana', 'Kibana', 'Machine Learning']
-      }
-    ];
-
-    document.getElementById('app').innerHTML = `
-      ${Components.Navigation()}
-      ${Components.Hero(profile)}
-      ${Components.Stats(stats)}
-      ${Components.Experience(jobs)}
-      ${Components.Skills(skillCategories)}
-      <section class="py-24 relative">
-        <div class="container grid md:grid-cols-2 gap-12">
-          <div class="reveal">
-            <h3 class="font-display text-2xl font-bold mb-6 flex items-center gap-3 text-slate-300">
-              <span class="w-8 h-8 rounded-lg bg-gold-400/10 flex items-center justify-center text-gold-400 border border-gold-400/20">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
-              </span>
-              Education
-            </h3>
-            <div class="glass rounded-2xl p-6 card-hover border border-gold-400/5">
-              <div class="text-gold-400 font-mono text-sm mb-1">2013 - 2016</div>
-              <h4 class="text-lg font-bold mb-2 text-cream">Bachelor of Electronic Engineering</h4>
-              <p class="text-slate-400">The Hong Kong University of Science and Technology</p>
-            </div>
-          </div>
-          <div class="reveal">
-            <h3 class="font-display text-2xl font-bold mb-6 flex items-center gap-3 text-slate-300">
-              <span class="w-8 h-8 rounded-lg bg-gold-500/10 flex items-center justify-center text-gold-500 border border-gold-500/20">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"/></svg>
-              </span>
-              Languages
-            </h3>
-            <div class="space-y-4">
-              <div class="glass rounded-xl p-4 flex justify-between items-center card-hover border border-gold-400/5">
-                <span class="font-medium text-cream">Cantonese</span>
-                <span class="text-sm text-gold-400 bg-gold-400/10 px-3 py-1 rounded-full border border-gold-400/20 font-mono">Native</span>
-              </div>
-              <div class="glass rounded-xl p-4 flex justify-between items-center card-hover border border-gold-400/5">
-                <span class="font-medium text-cream">English</span>
-                <span class="text-sm text-gold-500 bg-gold-500/10 px-3 py-1 rounded-full border border-gold-500/20 font-mono">Full Professional</span>
-              </div>
-              <div class="glass rounded-xl p-4 flex justify-between items-center card-hover border border-gold-400/5">
-                <span class="font-medium text-cream">Mandarin</span>
-                <span class="text-sm text-gold-500 bg-gold-500/10 px-3 py-1 rounded-full border border-gold-500/20 font-mono">Full Professional</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      ${Components.Contact(profile)}
-      ${Components.Footer({ ...profile, year: new Date().getFullYear() })}
-    `;
 
     document.addEventListener('DOMContentLoaded', () => {
+      const app = document.getElementById('app');
+      const profile = {
+        name: 'Ben Kwok',
+        title: 'Senior Software Engineer',
+        location: 'Hong Kong',
+        email: 'kcbenkwok@gmail.com',
+        linkedin: 'https://linkedin.com/in/benkwok1018',
+        years: 9,
+        markets: 10
+      };
+
+      const stats = { manualReduction: 40, years: 9, markets: 10 };
+
+      const jobs = [
+        {
+          period: 'May 2021 - Present',
+          title: 'Software Engineer',
+          company: 'Société Générale, Hong Kong',
+          achievements: [
+            'Designed microservices for 10+ APAC markets',
+            'Automated workflows reducing manual processing by 40%',
+            'Full-stack with React, FastAPI, Neo4j, PostgreSQL'
+          ],
+          tags: ['Python', 'FastAPI', 'Kubernetes']
+        },
+        {
+          period: 'Nov 2018 - May 2021',
+          title: 'Software Engineer',
+          company: 'Kami AI, Hong Kong - A AI Conversational Company',
+          achievements: [
+            'Collaborated with NLP Scientists on production ML systems',
+            'Built end-to-end ML solutions for customer problems',
+            'Designed K8s & Kubeless serverless architecture'
+          ],
+          tags: ['NLP', 'Machine Learning', 'Kubernetes']
+        },
+        {
+          period: 'Aug 2017 - Nov 2018',
+          title: 'Engineer',
+          company: 'TVB International Company',
+          achievements: [
+            'Built web crawlers for collecting infringing material',
+            'Developed logo detection on pictures using ML',
+            'Network packet sniffing tools development'
+          ],
+          tags: ['Python', 'Web Scraping', 'Data Processing']
+        },
+        {
+          period: 'Jul 2016 - Aug 2017',
+          title: 'Assistant System Engineer',
+          company: 'Radio Frequency Engineering Ltd',
+          achievements: [
+            'Designed Radio & LTE Networks for Mass Transport Railway',
+            'Participated in government Railway Radio Network projects'
+          ],
+          tags: ['LTE', 'Network Design', 'Telecom']
+        }
+      ];
+
+      const skillCategories = [
+        {
+          title: 'Backend Development',
+          icon: '<svg class="w-6 h-6 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/></svg>',
+          skills: ['Python', 'FastAPI', 'Flask', 'Django', 'Node.js', 'Celery']
+        },
+        {
+          title: 'Frontend Development',
+          icon: '<svg class="w-6 h-6 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>',
+          skills: ['React', 'JavaScript', 'HTML/CSS', 'Data Visualization']
+        },
+        {
+          title: 'Databases',
+          icon: '<svg class="w-6 h-6 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/></svg>',
+          skills: ['PostgreSQL', 'MongoDB', 'Neo4j', 'Redis', 'Elasticsearch']
+        },
+        {
+          title: 'DevOps & Cloud',
+          icon: '<svg class="w-6 h-6 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>',
+          skills: ['Docker', 'Kubernetes', 'Azure', 'Jenkins', 'GitHub Actions', 'AWS S3']
+        },
+        {
+          title: 'Data & Monitoring',
+          icon: '<svg class="w-6 h-6 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>',
+          skills: ['Pandas', 'NumPy', 'Grafana', 'Kibana', 'Machine Learning']
+        }
+      ];
+
+      app.innerHTML = `
+        ${Components.Navigation()}
+        ${Components.Hero(profile)}
+        ${Components.Stats(stats)}
+        ${Components.Experience(jobs)}
+        ${Components.Skills(skillCategories)}
+        <section class="py-24 relative">
+          <div class="container grid md:grid-cols-2 gap-12">
+            <div class="reveal">
+              <h3 class="font-display text-2xl font-bold mb-6 flex items-center gap-3 text-slate-300">
+                <span class="w-8 h-8 rounded-lg bg-gold-400/10 flex items-center justify-center text-gold-400 border border-gold-400/20">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
+                </span>
+                Education
+              </h3>
+              <div class="glass rounded-2xl p-6 card-hover border border-gold-400/5">
+                <div class="text-gold-400 font-mono text-sm mb-1">2013 - 2016</div>
+                <h4 class="text-lg font-bold mb-2 text-cream">Bachelor of Electronic Engineering</h4>
+                <p class="text-slate-400">The Hong Kong University of Science and Technology</p>
+              </div>
+            </div>
+            <div class="reveal">
+              <h3 class="font-display text-2xl font-bold mb-6 flex items-center gap-3 text-slate-300">
+                <span class="w-8 h-8 rounded-lg bg-gold-500/10 flex items-center justify-center text-gold-500 border border-gold-500/20">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"/></svg>
+                </span>
+                Languages
+              </h3>
+              <div class="space-y-4">
+                <div class="glass rounded-xl p-4 flex justify-between items-center card-hover border border-gold-400/5">
+                  <span class="font-medium text-cream">Cantonese</span>
+                  <span class="text-sm text-gold-400 bg-gold-400/10 px-3 py-1 rounded-full border border-gold-400/20 font-mono">Native</span>
+                </div>
+                <div class="glass rounded-xl p-4 flex justify-between items-center card-hover border border-gold-400/5">
+                  <span class="font-medium text-cream">English</span>
+                  <span class="text-sm text-gold-500 bg-gold-500/10 px-3 py-1 rounded-full border border-gold-500/20 font-mono">Full Professional</span>
+                </div>
+                <div class="glass rounded-xl p-4 flex justify-between items-center card-hover border border-gold-400/5">
+                  <span class="font-medium text-cream">Mandarin</span>
+                  <span class="text-sm text-gold-500 bg-gold-500/10 px-3 py-1 rounded-full border border-gold-500/20 font-mono">Full Professional</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        ${Components.Contact(profile)}
+        ${Components.Footer({ ...profile, year: new Date().getFullYear() })}
+      `;
+
       const animations = AnimationController();
       const navigation = NavigationController();
-      animations.animateHeroCounters();
+      
+      // Animate hero counters after a short delay to ensure elements are rendered
+      setTimeout(() => {
+        animations.animateHeroCounters();
+      }, 100);
     });
   </script>
 </body>
