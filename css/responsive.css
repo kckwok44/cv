@@ -1,0 +1,48 @@
+/* ============================================================
+   Responsive Utilities
+   ============================================================ */
+
+/* --- Mobile (max 768px) --- */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  h1 { font-size: 2.5rem; }
+  h2 { font-size: 2rem; }
+  h3 { font-size: 1.5rem; }
+
+  .btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.875rem;
+  }
+
+  .hero {
+    min-height: auto;
+    padding-top: 6rem;
+    padding-bottom: 4rem;
+  }
+
+  .blob {
+    width: 200px;
+    height: 200px;
+  }
+
+  .card-hover:hover {
+    transform: none;
+  }
+}
+
+/* --- Tablet (768px – 1024px) --- */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+}
+
+/* --- Large screens (min 1280px) --- */
+@media (min-width: 1280px) {
+  .container {
+    max-width: 90rem;
+  }
+}

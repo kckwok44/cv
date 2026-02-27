@@ -54,7 +54,7 @@ const Components = {
         <div class="flex justify-between items-center">
           <a href="#" class="font-display font-bold text-2xl tracking-tight text-gold-400">BK.</a>
           <div class="hidden md:flex space-x-8">
-            <a href="#about" class="nav-link">About</a>
+            <a href="#" class="nav-link">About</a>
             <a href="#experience" class="nav-link">Experience</a>
             <a href="#skills" class="nav-link">Skills</a>
             <a href="#contact" class="nav-link">Contact</a>
